@@ -2,6 +2,8 @@ package com.example.writeonthewall.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "app_user") // Переименовали таблицу на app_user
 public class User {
@@ -18,6 +20,10 @@ public class User {
 
     @Column(nullable = false)
     private String role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<Comment> comments;
+
 
     // Геттеры и сеттеры
     public Long getId() {

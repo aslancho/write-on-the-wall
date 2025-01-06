@@ -24,8 +24,14 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@RequestParam String username, @RequestParam String password) {
+    public String registerUser(@RequestParam String username,
+                               @RequestParam String password,
+                               @RequestParam String confirmPassword) {
+        if (!password.equals(confirmPassword)) {
+            throw new RuntimeException("Passwords do not match!");
+        }
         userService.registerUser(username, password, "USER");
         return "redirect:/login";
     }
+
 }

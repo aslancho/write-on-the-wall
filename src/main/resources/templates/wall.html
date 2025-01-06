@@ -3,30 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Write on the Wall</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 50px; }
-        .comment-form { margin-top: 20px; }
-        .comment { margin: 10px 0; border-bottom: 1px solid #ccc; padding: 5px 0; }
-        .comment p { margin: 0; }
-        .comment span { font-size: 0.9em; color: #666; }
-    </style>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
+
 <body>
-<h2>Write on the Wall</h2>
-<h4>Welcome, <span th:text="${#authentication.name}">User</span>!</h4>
-<a th:href="@{/logout}">Logout</a>
+<div class="container">
+    <header class="wall-header">
+        <h2>Write on the Wall</h2>
+        <div class="user-actions">
+            <a th:href="@{/profile}"><button class="btn btn-secondary">Профиль</button></a>
+            <form th:action="@{/logout}" method="post">
+                <button class="btn btn-logout">Logout</button>
+            </form>
+        </div>
+    </header>
 
-<form class="comment-form" th:action="@{/wall}" method="post">
-    <label>Write a comment:</label>
-    <input type="text" name="content" placeholder="Your comment here..." required>
-    <button type="submit">Post Comment</button>
-</form>
+    <h4>Welcome, <span th:text="${#authentication.name}">User</span>!</h4>
 
-<h3>Comments:</h3>
-<div th:each="comment : ${comments}" class="comment">
-    <p><strong th:text="${comment.user.username}">Username</strong>:</p>
-    <p th:text="${comment.content}">This is a comment.</p>
-    <span th:text="${#temporals.format(comment.createdAt, 'yyyy-MM-dd HH:mm')}">Timestamp</span>
+    <form class="comment-form" th:action="@{/wall}" method="post">
+        <label>Write a comment:</label>
+        <input type="text" name="content" placeholder="Your comment here..." required>
+        <button type="submit" class="btn btn-success">Post Comment</button>
+    </form>
+
+    <h3>Comments:</h3>
+    <div th:if="${comments != null}" class="comments">
+        <div th:each="comment : ${comments}" class="comment">
+            <p><strong th:text="${comment.user.username}">Username</strong>:</p>
+            <p th:text="${comment.content}">This is a comment.</p>
+            <span th:text="${#temporals.format(comment.createdAt, 'yyyy-MM-dd HH:mm')}">Timestamp</span>
+        </div>
+    </div>
+    <p th:if="${comments == null || comments.isEmpty()}">No comments available.</p>
 </div>
 </body>
 </html>

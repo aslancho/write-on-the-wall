@@ -3,21 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 50px; }
-        form { max-width: 300px; margin: auto; }
-        input, button { display: block; margin-top: 10px; width: 100%; }
-    </style>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
+
 <body>
-<h2>Register</h2>
-<form th:action="@{/register}" method="post">
-    <label>Username:</label>
-    <input type="text" name="username" required>
-    <label>Password:</label>
-    <input type="password" name="password" required>
-    <button type="submit">Register</button>
-</form>
-<p>Already have an account? <a th:href="@{/login}">Login here</a></p>
+<div class="container">
+    <h2>Register</h2>
+    <form th:action="@{/register}" method="post" onsubmit="return validatePassword()">
+        <label>Username:</label>
+        <input type="text" name="username" required>
+
+        <label>Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label>Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+        <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a th:href="@{/login}">Login here</a></p>
+</div>
+
+<script>
+    function validatePassword() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match!');
+            return false;
+        }
+        return true;
+    }
+</script>
 </body>
 </html>

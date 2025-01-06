@@ -1,0 +1,124 @@
+/* 🌟 Общие стили */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #1a3c34, #254d47);
+    color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* 🌟 Контейнер страницы */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* 📝 Заголовки */
+h2, h3, h4 {
+    text-align: center;
+    color: #c5e1a5;
+}
+
+/* 📝 Форма */
+form {
+    background: #2e4d43;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* 📝 Поля ввода */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #3a5f4b;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: #1f332d;
+    color: #f0f0f0;
+}
+
+/* 🔘 Кнопки */
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #388e3c;
+}
+
+/* 💬 Комментарии: фиксированная высота */
+.comment {
+    background: #2e4d43;
+    border-radius: 4px;
+    margin: 10px 0;
+    padding: 10px;
+    border-left: 4px solid #388e3c;
+    text-align: left;
+    max-width: 600px;
+    min-height: 120px; /* Установим минимальную высоту */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Для равномерного распределения */
+    box-sizing: border-box;
+}
+
+/* 📜 Содержимое текста внутри комментария */
+.comment p {
+    margin: 0;
+    word-wrap: break-word; /* Перенос длинных слов */
+    overflow: hidden; /* Обрезка текста, если нужно */
+}
+
+/* 🕒 Метаданные (время, автор) */
+.comment span {
+    font-size: 0.9em;
+    color: #a5d6a7;
+    margin-top: 10px;
+}
+
+/* 📄 Текстовые блоки */
+p {
+    text-align: center;
+}
+
+/* 🔗 Ссылки */
+a {
+    color: #81c784;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* 📱 Адаптивность */
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+    }
+    button {
+        font-size: 14px;
+    }
+}

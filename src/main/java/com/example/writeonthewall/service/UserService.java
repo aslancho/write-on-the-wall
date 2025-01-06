@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class    UserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -26,5 +26,10 @@ public class UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found: " + username));
+    }
+
+    public void deleteUser(String username) {
+        User user = findByUsername(username);
+        userRepository.delete(user);
     }
 }
