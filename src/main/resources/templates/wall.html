@@ -5,19 +5,33 @@
     <title>Write on the Wall</title>
     <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
-
 <body>
-<div class="container">
-    <header class="wall-header">
-        <h2>Write on the Wall</h2>
-        <div class="user-actions">
-            <a th:href="@{/profile}"><button class="btn btn-secondary">Профиль</button></a>
-            <form th:action="@{/logout}" method="post">
-                <button class="btn btn-logout">Logout</button>
-            </form>
-        </div>
-    </header>
+<!-- 🌟 Навигационная панель -->
+<nav class="navbar">
+    <!-- Логотип слева -->
+    <div class="navbar-logo">
+        <a th:href="@{/wall}">📝 Write on the Wall</a>
+    </div>
 
+    <!-- Центральная панель -->
+    <div class="navbar-center">
+        <a th:href="@{/wall}" class="navbar-link">Стена</a>
+    </div>
+
+    <!-- Кнопки справа -->
+    <div class="navbar-actions">
+        <a th:href="@{/profile}" class="navbar-btn">Профиль</a>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="navbar-btn">Выход</button>
+        </form>
+    </div>
+
+
+
+</nav>
+
+<!-- 🌟 Контент страницы -->
+<div class="container">
     <h4>Welcome, <span th:text="${#authentication.name}">User</span>!</h4>
 
     <form class="comment-form" th:action="@{/wall}" method="post">

@@ -5,11 +5,7 @@ body {
     padding: 0;
     background: linear-gradient(to right, #1a3c34, #254d47);
     color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
-    text-align: center;
 }
 
 /* 🌟 Контейнер страницы */
@@ -19,6 +15,8 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
+    text-align: center;
+    margin-top: 20px;
 }
 
 /* 📝 Заголовки */
@@ -68,7 +66,7 @@ button:hover {
     background-color: #388e3c;
 }
 
-/* 💬 Комментарии: фиксированная высота */
+/* 💬 Комментарии */
 .comment {
     background: #2e4d43;
     border-radius: 4px;
@@ -77,18 +75,11 @@ button:hover {
     border-left: 4px solid #388e3c;
     text-align: left;
     max-width: 600px;
-    min-height: 120px; /* Установим минимальную высоту */
+    min-height: 120px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Для равномерного распределения */
+    justify-content: space-between;
     box-sizing: border-box;
-}
-
-/* 📜 Содержимое текста внутри комментария */
-.comment p {
-    margin: 0;
-    word-wrap: break-word; /* Перенос длинных слов */
-    overflow: hidden; /* Обрезка текста, если нужно */
 }
 
 /* 🕒 Метаданные (время, автор) */
@@ -96,11 +87,6 @@ button:hover {
     font-size: 0.9em;
     color: #a5d6a7;
     margin-top: 10px;
-}
-
-/* 📄 Текстовые блоки */
-p {
-    text-align: center;
 }
 
 /* 🔗 Ссылки */
@@ -113,12 +99,158 @@ a:hover {
     text-decoration: underline;
 }
 
+/* 🌟 Навигационная панель */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Элементы по краям и в центре */
+    align-items: center;
+    background-color: #2e4d43;
+    padding: 10px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Логотип слева */
+.navbar-left {
+    flex: 1;
+}
+
+.navbar-logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.navbar-logo a {
+    text-decoration: none;
+    color: #c5e1a5;
+}
+
+.navbar-logo a:hover {
+    color: #81c784;
+}
+
+/* Центральная кнопка (Стена) */
+.navbar-center {
+    flex: 1;
+    text-align: center;
+}
+
+.navbar-center .navbar-link {
+    text-decoration: none;
+    color: #c5e1a5;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.navbar-center .navbar-link:hover {
+    color: #81c784;
+}
+
+/* Правый блок (Профиль и Выход) */
+.navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    align-items: center;
+}
+
+.navbar-right .btn {
+    font-size: 0.9em;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+}
+
+.navbar-right .btn-secondary {
+    background-color: #4caf50;
+    color: white;
+}
+
+.navbar-right .btn-secondary:hover {
+    background-color: #388e3c;
+}
+
+.navbar-right .btn-logout {
+    background-color: #d9534f;
+    color: white;
+}
+
+.navbar-right .btn-logout:hover {
+    background-color: #c9302c;
+}
+
 /* 📱 Адаптивность */
 @media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .navbar-center {
+        order: 1;
+        text-align: left;
+    }
+
+    .navbar-right {
+        order: 2;
+        justify-content: flex-start;
+    }
+
+    .navbar-left {
+        order: 0;
+    }
+
     form {
         padding: 15px;
     }
+
     button {
         font-size: 14px;
     }
 }
+
+/* 🌟 Navbar Actions */
+.navbar-actions {
+    display: flex;
+    gap: 10px; /* Расстояние между кнопками */
+    align-items: center; /* Выравнивание по вертикали */
+}
+
+/* Общие стили для кнопок */
+.navbar-actions .navbar-btn {
+    display: inline-flex; /* Для выравнивания содержимого */
+    align-items: center; /* Вертикальное выравнивание */
+    justify-content: center; /* Горизонтальное выравнивание */
+    padding: 5px 15px;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    background-color: #4caf50;
+    color: white;
+    min-width: 80px; /* Минимальная ширина для равномерности */
+}
+
+/* Эффект при наведении */
+.navbar-actions .navbar-btn:hover {
+    background-color: #388e3c;
+}
+
+/* Дополнительные стили для формы */
+.navbar-actions form {
+    margin: 0; /* Убираем внешние отступы */
+    padding: 0; /* Убираем внутренние отступы */
+    display: inline-flex;
+    align-items: center;
+}
+
